@@ -19,3 +19,4 @@ mod leap;
 mod prime_factors;
 mod proverb;
 mod sumofmul;
+mod sumofmul1;
