@@ -1,8 +1,8 @@
 use std::cell::{Ref, RefCell};
 use std::fmt::{Debug, Formatter};
 use std::ops::Deref;
-use std::sync::Arc;
 use std::sync::atomic::{AtomicBool, Ordering};
+use std::sync::Arc;
 use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
@@ -12,42 +12,37 @@ struct Lock<T> {
     data: RefCell<T>,
 }
 
-
 impl<T> Debug for Lock<T>
-where  T:Debug
+where
+    T: Debug,
 {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        write!(f,"Lock<{:?}>",self.data.borrow())
+        write!(f, "Lock<{:?}>", self.data.borrow())
     }
 }
 
-
-
-unsafe impl<T> Sync for Lock<T> {
-}
+unsafe impl<T> Sync for Lock<T> {}
 
 impl<T> Lock<T> {
-    fn new(data:T) ->Self {
+    fn new(data: T) -> Self {
         Self {
             locked: AtomicBool::new(false),
             data: RefCell::new(data),
         }
     }
-    fn lock(&self,op: impl FnOnce(&mut T)) {
-        while self.locked.compare_exchange(false,true,Ordering::Acquire,Ordering::Relaxed).is_err() {
-        }
+    fn lock(&self, op: impl FnOnce(&mut T)) {
+        while self
+            .locked
+            .compare_exchange(false, true, Ordering::Acquire, Ordering::Relaxed)
+            .is_err()
+        {}
 
         op(&mut self.data.borrow_mut());
-        self.locked.store(false,Ordering::Release);
+        self.locked.store(false, Ordering::Release);
     }
-
-
 }
 
-
 fn main() {
-
-
     let data = Arc::new(Lock::new(0));
     let data1 = data.clone();
     let t1 = thread::spawn(move || {
@@ -59,10 +54,10 @@ fn main() {
     let t2 = thread::spawn(move || {
         sleep(Duration::from_secs(1));
         println!("t2");
-        data2.lock(|v|*v*=10);
+        data2.lock(|v| *v *= 10);
     });
     t1.join().unwrap();
     println!("===");
     t2.join().unwrap();
-    println!("main data:{:?}",data);
+    println!("main data:{:?}", data);
 }

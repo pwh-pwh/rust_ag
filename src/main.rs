@@ -10,27 +10,26 @@ use std::thread;
 
 fn main() {
     let mut result = File::create("aa.txt").unwrap();
-    let w:&mut dyn Write = &mut result;
+    let w: &mut dyn Write = &mut result;
     w.write_all(b"bb").unwrap();
     let r = Arc::new(1);
     let b = r.clone();
-    thread::spawn(move||{
-        println!("{:?}",b);
+    thread::spawn(move || {
+        println!("{:?}", b);
     });
     struct A {
-        name: String
+        name: String,
     }
-    let a = A{
+    let a = A {
         name: Default::default(),
     };
-    let a:i32 = At::f();
-    println!("{}",a);
+    let a: i32 = At::f();
+    println!("{}", a);
     let s = "a".to_string();
     let ss = &s;
     let s1 = ss.deref();
     let st = MyString { inner: 1 };
-    let st1:i32 = *st;
-
+    let st1: i32 = *st;
 }
 impl At for i32 {
     fn f() -> Self {

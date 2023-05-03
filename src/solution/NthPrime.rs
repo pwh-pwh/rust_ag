@@ -1,25 +1,25 @@
 pub fn nth(n: u32) -> u32 {
-    let n = n+1;
+    let n = n + 1;
     let mut count = 0;
     let mut num = 2;
-    while count<n {
+    while count < n {
         if isPrime(num) {
-            count+=1;
-            num+=1;
+            count += 1;
+            num += 1;
         } else {
-            num+=1;
+            num += 1;
         }
     }
-    return num-1;
+    return num - 1;
 }
-fn isPrime(n:u32) -> bool {
-    if n<=1 {
+fn isPrime(n: u32) -> bool {
+    if n <= 1 {
         false
     } else {
-        let t = n/2;
+        let t = n / 2;
         for i in 2..=t {
-            if n%i==0 {
-                return false
+            if n % i == 0 {
+                return false;
             }
         }
         true

@@ -2,16 +2,14 @@ pub struct Duration(f64);
 
 impl From<u64> for Duration {
     fn from(value: u64) -> Self {
-        Duration(
-            (value as f64)/31557600f64
-        )
+        Duration((value as f64) / 31557600f64)
     }
 }
 
 pub trait Planet {
     fn period() -> f64;
-    fn years_during(d:&Duration) -> f64 {
-        d.0/Self::period()
+    fn years_during(d: &Duration) -> f64 {
+        d.0 / Self::period()
     }
 }
 
@@ -23,7 +21,7 @@ macro_rules! planet {
                 $e
             }
         }
-    }
+    };
 }
 planet!(Earth, 1.0);
 planet!(Mercury, 0.2408467);
@@ -41,21 +39,20 @@ mod tests {
     fn test_er() {
         let duration = Duration::from(1_000_000_000);
         let during = Earth::years_during(&duration);
-        println!("{}",during);
+        println!("{}", during);
     }
 
     #[test]
     fn test_mar() {
         let duration = Duration::from(2_134_835_688);
         let during = Mercury::years_during(&duration);
-        println!("{}",during);
+        println!("{}", during);
     }
 
     #[test]
     fn test_ve() {
         let duration = Duration::from(189_839_836);
         let during = Venus::years_during(&duration);
-        println!("{}",during);
+        println!("{}", during);
     }
-
 }

@@ -5,11 +5,11 @@ fn main() {
     let mut name1 = String::from("hola");
     let mut c = || {
         name.push_str(" tyr");
-        println!("c:{}",name);
+        println!("c:{}", name);
     };
     let mut c1 = move || {
         name1.push_str(" aa");
-        println!("c1:{}",name1);
+        println!("c1:{}", name1);
     };
     c();
     c1();

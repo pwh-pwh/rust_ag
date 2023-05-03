@@ -1,4 +1,3 @@
-
 pub fn reverse(input: &str) -> String {
     input.chars().rev().collect()
 }
@@ -7,4 +6,3 @@ pub fn reverse(input: &str) -> String {
 fn test_rev() {
     println!("{}", reverse("abb"));
 }
-

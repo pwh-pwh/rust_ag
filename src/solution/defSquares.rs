@@ -3,8 +3,7 @@ pub fn square_of_sum(n: u32) -> u32 {
 }
 
 pub fn sum_of_squares(n: u32) -> u32 {
-    (1..n+1).map(|x|x.pow(2))
-        .sum()
+    (1..n + 1).map(|x| x.pow(2)).sum()
 }
 
 pub fn difference(n: u32) -> u32 {
@@ -18,9 +17,9 @@ mod tests {
     use crate::solution::defSquares::difference;
 
     #[test]
-    fn test () {
-        assert_eq!(3025,square_of_sum(10));
-        assert_eq!(385,sum_of_squares(10));
-        assert_eq!(2640,difference(10));
+    fn test() {
+        assert_eq!(3025, square_of_sum(10));
+        assert_eq!(385, sum_of_squares(10));
+        assert_eq!(2640, difference(10));
     }
 }

@@ -1,6 +1,4 @@
-
-
-use std::sync::{Arc, Mutex, Condvar};
+use std::sync::{Arc, Condvar, Mutex};
 use std::thread;
 use std::thread::sleep;
 use std::time::Duration;
@@ -18,13 +16,11 @@ fn main() {
         cvar.notify_one(); // 唤醒等待的线程
         sleep(Duration::from_secs(1));
         // drop(done);
-        loop {
-
-        }
+        loop {}
     });
 
     let (lock, cvar) = &*pair; // 获取 Mutex 和 CondVar 对象的引用
-    // sleep(Duration::from_secs(1));
+                               // sleep(Duration::from_secs(1));
     let mut done = lock.lock().unwrap();
     eprintln!("done");
     while !*done {
