@@ -1,7 +1,16 @@
+mod Acronym;
 mod ArmstrongNumbers;
+mod Conjecture;
+mod Cu_Frequency;
+mod Diffie_Hellman;
+mod Fc_Frequency;
+mod Frequency;
+mod Garden;
 mod Gigasecond;
+mod MatchingBrackets;
 mod NthPrime;
 mod NthPrime2;
+mod Series;
 mod anagram;
 mod beersong;
 mod bob;
