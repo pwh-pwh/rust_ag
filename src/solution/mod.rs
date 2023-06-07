@@ -11,6 +11,7 @@ mod Garden;
 mod Gigasecond;
 mod GradeSchool;
 mod Hamming;
+mod LargestSeriesProduct;
 mod LinkedList;
 mod MatchingBrackets;
 mod NthPrime;
