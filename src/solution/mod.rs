@@ -46,6 +46,7 @@ mod prime_factors;
 mod proverb;
 mod raindrops;
 pub mod reverse_str;
+mod robot_name;
 mod space_age;
 mod sublist;
 mod sublist2;
